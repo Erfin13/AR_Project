@@ -1,19 +1,21 @@
 # Unity 專案忽略的檔案
 
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Pp]ackages/
-[Aa]ssets/AssetStoreTools*
+# 作業系統產生的垃圾檔案
+.DS_Store
+Thumbs.db
+Desktop.ini
 
-# 自動生成的文件
-*.csproj
-*.unityproj
-*.sln
+# Unity 產生的檔案
+Temp/
+Library/
+Logs/
+UserSettings/
+MemoryCaptures/
+
+# 版本控制不需要的設定檔
+.vscode/
+.idea/
 *.suo
-*.tmp
 *.user
 *.userprefs
 *.pidb
@@ -54,7 +56,6 @@ crashlytics-build.properties
 # 系統文件
 .DS_Store
 Thumbs.db
-Desktop.ini
 
 # 日誌文件
 Logs/
@@ -65,4 +66,43 @@ Assets/StreamingAssets/aa/*
 Assets/AddressableAssetsData/*.hash
 Assets/AddressableAssetsData/*.json
 
-#
+# 其他編譯過的檔案
+*.exe
+*.dll
+*.ilk
+*.exp
+*.lib
+*.so
+*.a
+*.idb
+*.swp
+*.sln
+*.csproj
+*.unityproj
+*.pidb
+*.mdb
+*.cache
+*.bak
+*.temp
+
+# Unity產生的Build檔案
+Builds/
+Build/
+Assets/StreamingAssets/*.manifest
+Assets/StreamingAssets/*.hash
+Assets/StreamingAssets/*.json
+
+# Unity Package Cache
+Library/PackageCache/
+
+# Rider / JetBrains 設定檔
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VSCode 設定檔
+.vscode/
+
+# Logs
+Logs/
