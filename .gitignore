@@ -1,0 +1,68 @@
+# Unity 專案忽略的檔案
+
+# 🔹 作業系統產生的垃圾檔案
+.DS_Store
+Thumbs.db
+
+# 🔹 Unity 產生的檔案
+Temp/
+Library/
+Logs/
+UserSettings/
+MemoryCaptures/
+
+# 🔹 版本控制不需要的設定檔
+.vscode/
+.idea/
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+*.config
+
+# 🔹 編譯過的檔案
+*.exe
+*.dll
+*.ilk
+*.exp
+*.lib
+*.so
+*.a
+*.idb
+*.pdb
+*.swp
+*.sln
+*.csproj
+*.unityproj
+*.pidb
+*.mdb
+*.cache
+*.bak
+*.temp
+
+# 🔹 Unity 產生的 Build 檔案
+Builds/
+Build/
+Assets/StreamingAssets/*.manifest
+Assets/StreamingAssets/*.hash
+Assets/StreamingAssets/*.json
+
+# 🔹 Unity Package Cache
+Library/PackageCache/
+
+# 🔹 Rider / JetBrains 設定檔
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# 🔹 VSCode 設定檔
+.vscode/
+
+# 🔹 Logs
+Logs/
