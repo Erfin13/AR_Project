@@ -1,10 +1,20 @@
+<<<<<<< HEAD
 # 忽略 Unity 專案特定的檔案
+=======
+# 🔹 作業系統產生的垃圾檔案
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 🔹 Unity 產生的檔案（應該完全忽略）
+>>>>>>> db21add (Test)
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
 [Pp]ackages/
+<<<<<<< HEAD
 [Aa]ssets/AssetStoreTools*
 
 # 自動生成的文件
@@ -13,6 +23,14 @@
 *.sln
 *.suo
 *.tmp
+=======
+MemoryCaptures/
+
+# 🔹 版本控制不需要的設定檔
+.vscode/
+.idea/
+*.suo
+>>>>>>> db21add (Test)
 *.user
 *.userprefs
 *.pidb
@@ -23,6 +41,7 @@
 *.opendb
 *.VC.db
 
+<<<<<<< HEAD
 # Unity3D生成的meta文件
 *.meta
 
@@ -42,11 +61,18 @@ crashlytics-build.properties
 *.VC.opendb
 
 # Rider生成的文件
+=======
+# 🔹 Unity Package Cache
+Library/PackageCache/
+
+# 🔹 Rider / JetBrains 設定檔
+>>>>>>> db21add (Test)
 .idea/
 *.iml
 *.ipr
 *.iws
 
+<<<<<<< HEAD
 # VSCode生成的文件
 .vscode/
 
@@ -56,14 +82,21 @@ Thumbs.db
 Desktop.ini
 
 # 日誌文件
+=======
+# 🔹 VSCode 設定檔
+.vscode/
+
+# 🔹 Logs
+>>>>>>> db21add (Test)
 Logs/
 *.log
 
-# 不需要版本控制的資源文件
+# 🔹 版本控制不需要的資源檔
 Assets/StreamingAssets/aa/*
 Assets/AddressableAssetsData/*.hash
 Assets/AddressableAssetsData/*.json
 
+<<<<<<< HEAD
 # 其他編譯過的檔案
 *.exe
 *.dll
@@ -104,3 +137,17 @@ Library/PackageCache/
 
 # Logs
 Logs/
+=======
+# 🔹 打包 & 產生的檔案
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# 🔹 Git LFS 不適合的壓縮檔（直接忽略）
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+>>>>>>> db21add (Test)
