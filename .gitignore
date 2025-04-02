@@ -1,68 +1,66 @@
 # Unity 專案忽略的檔案
 
-# 🔹 作業系統產生的垃圾檔案
-.DS_Store
-Thumbs.db
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Pp]ackages/
+[Aa]ssets/AssetStoreTools*
 
-# 🔹 Unity 產生的檔案
-Temp/
-Library/
-Logs/
-UserSettings/
-MemoryCaptures/
-
-# 🔹 版本控制不需要的設定檔
-.vscode/
-.idea/
+# 自動生成的文件
+*.csproj
+*.unityproj
+*.sln
 *.suo
+*.tmp
 *.user
 *.userprefs
 *.pidb
 *.booproj
 *.svd
 *.pdb
+*.mdb
 *.opendb
 *.VC.db
-*.config
 
-# 🔹 編譯過的檔案
-*.exe
-*.dll
-*.ilk
-*.exp
-*.lib
-*.so
-*.a
-*.idb
-*.pdb
-*.swp
-*.sln
-*.csproj
-*.unityproj
-*.pidb
-*.mdb
-*.cache
-*.bak
-*.temp
+# Unity3D生成的meta文件
+*.meta
 
-# 🔹 Unity 產生的 Build 檔案
-Builds/
-Build/
-Assets/StreamingAssets/*.manifest
-Assets/StreamingAssets/*.hash
-Assets/StreamingAssets/*.json
+# Unity3D生成的項目文件
+*.unitypackage
 
-# 🔹 Unity Package Cache
-Library/PackageCache/
+# Crashlytics生成的文件
+crashlytics-build.properties
 
-# 🔹 Rider / JetBrains 設定檔
+# 編譯產生的文件
+*.apk
+*.aab
+*.keystore
+
+# Visual Studio生成的文件
+.vs/
+*.VC.opendb
+
+# Rider生成的文件
 .idea/
 *.iml
 *.ipr
 *.iws
 
-# 🔹 VSCode 設定檔
+# VSCode生成的文件
 .vscode/
 
-# 🔹 Logs
+# 系統文件
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 日誌文件
 Logs/
+*.log
+
+# 不需要版本控制的資源文件
+Assets/StreamingAssets/aa/*
+Assets/AddressableAssetsData/*.hash
+Assets/AddressableAssetsData/*.json
