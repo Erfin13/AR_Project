@@ -64,3 +64,5 @@ Logs/
 Assets/StreamingAssets/aa/*
 Assets/AddressableAssetsData/*.hash
 Assets/AddressableAssetsData/*.json
+
+#
