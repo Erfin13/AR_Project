@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
-using UnityEngine.XR.ARFoundation; // 確保 AR 功能
+using UnityEngine.XR.ARFoundation;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
@@ -9,8 +9,8 @@ public class ARObjectInteraction : MonoBehaviour
     private Transform objectTransform;
     private float initialDistance;
     private Vector3 initialScale;
-    private float rotationSpeed = 100f;  // 調整旋轉速度
-    private float scaleSmoothness = 10f; // 增加縮放平滑度
+    private float rotationSpeed = 100f;
+    private float scaleSmoothness = 10f;
 
     void Awake()
     {
@@ -19,37 +19,34 @@ public class ARObjectInteraction : MonoBehaviour
 
     void Start()
     {
-        // 確保物件有 Transform
         objectTransform = gameObject.transform.parent != null ? gameObject.transform.parent : gameObject.transform;
 
         if (objectTransform == null)
         {
-            Debug.LogError("🚨 ARObjectInteraction 未掛在物件上！");
+            Debug.LogError("🚨 ARObjectInteraction is not attached to any object!");
         }
 
-        // 檢查 AR Session 是否啟動
         Debug.Log("🟢 AR Session State: " + ARSession.state);
         if (ARSession.state < ARSessionState.SessionTracking)
         {
-            Debug.LogWarning("⚠️ AR Session 尚未完全啟動，請檢查 AR 設置！");
+            Debug.LogWarning("⚠️ AR Session has not fully started. Please check the AR setup!");
         }
 
-        // 檢查是否有 AR Anchor
         if (gameObject.GetComponent<ARAnchor>() == null)
         {
-            Debug.LogWarning("⚠️ 物件沒有 AR Anchor，建議手動添加！");
+            Debug.LogWarning("⚠️ No AR Anchor found on this object. Consider adding one!");
         }
     }
 
     void Update()
     {
         var activeTouches = Touch.activeTouches;
-        Debug.Log("🖐 目前觸控數量：" + activeTouches.Count);
+        Debug.Log("🖐 Active touch count: " + activeTouches.Count);
 
-        if (activeTouches.Count == 1) // 單指旋轉
+        if (activeTouches.Count == 1) // Single finger rotation
         {
             var touch = activeTouches[0];
-            Debug.Log("📌 單指觸控 DeltaX: " + touch.delta.x);
+            Debug.Log("📌 Single touch DeltaX: " + touch.delta.x);
 
             if (touch.phase == TouchPhase.Moved)
             {
@@ -58,26 +55,27 @@ public class ARObjectInteraction : MonoBehaviour
                 objectTransform.localEulerAngles = rotation;
             }
         }
-        else if (activeTouches.Count == 2) // 雙指縮放
+        else if (activeTouches.Count == 2) // Two-finger scaling
         {
             var touch0 = activeTouches[0];
             var touch1 = activeTouches[1];
 
             float currentDistance = Vector2.Distance(touch0.screenPosition, touch1.screenPosition);
-            Debug.Log("📏 兩指距離：" + currentDistance);
+            Debug.Log($"📏 Current two-finger distance: {currentDistance}");
 
             if (touch0.phase == TouchPhase.Began || touch1.phase == TouchPhase.Began)
             {
-                initialDistance = currentDistance;
+                initialDistance = currentDistance > 1e-5f ? currentDistance : initialDistance;
                 initialScale = objectTransform.localScale;
+                Debug.Log($"🎯 Initial distance recorded: {initialDistance}, Initial scale: {initialScale}");
             }
             else if (touch0.phase == TouchPhase.Moved || touch1.phase == TouchPhase.Moved)
             {
-                if (initialDistance > 1e-5f) // 避免 NaN
+                if (initialDistance > 1e-5f)
                 {
                     float scaleFactor = Mathf.Clamp(currentDistance / initialDistance, 0.5f, 2f);
                     Vector3 targetScale = initialScale * scaleFactor;
-                    Debug.Log("🔍 目標縮放：" + targetScale);
+                    Debug.Log($"🔍 Target scale: {targetScale}");
                     objectTransform.localScale = Vector3.Lerp(objectTransform.localScale, targetScale, Time.deltaTime * scaleSmoothness);
                 }
             }

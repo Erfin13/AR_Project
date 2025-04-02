@@ -136,11 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6c7b4044c1582e45ad286c75d3f87ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.64800954
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6c7b4044c1582e45ad286c75d3f87ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6c7b4044c1582e45ad286c75d3f87ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -188,6 +188,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6c7b4044c1582e45ad286c75d3f87ec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 491808662}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6c7b4044c1582e45ad286c75d3f87ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 491808666}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6c7b4044c1582e45ad286c75d3f87ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 491808665}
   m_SourcePrefab: {fileID: 100100000, guid: f6c7b4044c1582e45ad286c75d3f87ec, type: 3}
 --- !u!4 &491808659 stripped
 Transform:
@@ -224,6 +230,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DestroyOnRemoval: 1
+--- !u!114 &491808665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491808660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136f39b93781a78458de555463fa3aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSmoothness: 10
+  minDistance: 0.1
+--- !u!114 &491808666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491808660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498b6245e10b10b498b7ed37f95f5669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depthMaskQuad: {fileID: 1080612852}
+  activationDistance: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +363,7 @@ GameObject:
   - component: {fileID: 1080612856}
   - component: {fileID: 1080612855}
   - component: {fileID: 1080612854}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,6 +557,7 @@ GameObject:
   - component: {fileID: 1431833147}
   - component: {fileID: 1431833146}
   - component: {fileID: 1431833145}
+  - component: {fileID: 1431833150}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -738,6 +773,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1431833150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431833143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa4f90f6fc3c1741b6cf0ebdce0553c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1633366210
 GameObject:
   m_ObjectHideFlags: 0
