@@ -9,6 +9,9 @@ public class ARObjectInteraction : MonoBehaviour
     private Transform objectTransform;
     private float initialDistance;
     private Vector3 initialScale;
+    private Vector2 initialTouch0Position;
+    private Vector2 initialTouch1Position;
+    private Vector3 initialObjectPosition;
     private float rotationSpeed = 100f;
     private float scaleSmoothness = 10f;
 
@@ -19,7 +22,7 @@ public class ARObjectInteraction : MonoBehaviour
 
     void Start()
     {
-        objectTransform = GameObject.Find("Drone_Custom")?.transform;
+        objectTransform = GameObject.Find("drone_costum")?.transform;
 
         if (objectTransform == null)
         {
@@ -55,26 +58,41 @@ public class ARObjectInteraction : MonoBehaviour
                 objectTransform.localEulerAngles = rotation;
             }
         }
-        else if (activeTouches.Count == 2) // 兩指縮放
+        else if (activeTouches.Count == 2) // 兩指縮放與移動
         {
             var touch0 = activeTouches[0];
             var touch1 = activeTouches[1];
 
             float currentDistance = Vector2.Distance(touch0.screenPosition, touch1.screenPosition);
 
+            // 處理縮放邏輯
             if (touch0.phase == TouchPhase.Began || touch1.phase == TouchPhase.Began)
             {
                 initialDistance = currentDistance;
                 initialScale = objectTransform.localScale;
+
+                initialTouch0Position = touch0.screenPosition;
+                initialTouch1Position = touch1.screenPosition;
+
+                initialObjectPosition = objectTransform.position; // 儲存初始位置
             }
             else if (touch0.phase == TouchPhase.Moved || touch1.phase == TouchPhase.Moved)
             {
+                // 縮放
                 if (initialDistance > 1e-5f)
                 {
                     float scaleFactor = Mathf.Clamp(currentDistance / initialDistance, 0.5f, 2f);
                     objectTransform.localScale = Vector3.Lerp(objectTransform.localScale, initialScale * scaleFactor, Time.deltaTime * scaleSmoothness);
-                    // 🔄 **改成除法 `/ scaleFactor` 來反轉縮放邏輯**
                 }
+
+                // 移動物件
+                Vector2 currentTouch0Position = touch0.screenPosition;
+                Vector2 currentTouch1Position = touch1.screenPosition;
+
+                Vector2 touchDelta = (currentTouch0Position + currentTouch1Position) / 2 - (initialTouch0Position + initialTouch1Position) / 2;
+                Vector3 move = new Vector3(touchDelta.x * 0.01f, 0, touchDelta.y * 0.01f);  // 計算移動方向
+
+                objectTransform.position = initialObjectPosition + move; // 移動物件並更新位置
             }
         }
     }
