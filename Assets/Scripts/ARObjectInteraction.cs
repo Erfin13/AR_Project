@@ -55,28 +55,25 @@ public class ARObjectInteraction : MonoBehaviour
                 objectTransform.localEulerAngles = rotation;
             }
         }
-        else if (activeTouches.Count == 2) // Two-finger scaling
+        else if (activeTouches.Count == 2) // 兩指縮放
         {
             var touch0 = activeTouches[0];
             var touch1 = activeTouches[1];
 
             float currentDistance = Vector2.Distance(touch0.screenPosition, touch1.screenPosition);
-            Debug.Log($"📏 Current two-finger distance: {currentDistance}");
 
             if (touch0.phase == TouchPhase.Began || touch1.phase == TouchPhase.Began)
             {
-                initialDistance = currentDistance > 1e-5f ? currentDistance : initialDistance;
+                initialDistance = currentDistance;
                 initialScale = objectTransform.localScale;
-                Debug.Log($"🎯 Initial distance recorded: {initialDistance}, Initial scale: {initialScale}");
             }
             else if (touch0.phase == TouchPhase.Moved || touch1.phase == TouchPhase.Moved)
             {
                 if (initialDistance > 1e-5f)
                 {
                     float scaleFactor = Mathf.Clamp(currentDistance / initialDistance, 0.5f, 2f);
-                    Vector3 targetScale = initialScale * scaleFactor;
-                    Debug.Log($"🔍 Target scale: {targetScale}");
-                    objectTransform.localScale = Vector3.Lerp(objectTransform.localScale, targetScale, Time.deltaTime * scaleSmoothness);
+                    objectTransform.localScale = Vector3.Lerp(objectTransform.localScale, initialScale / scaleFactor, Time.deltaTime * scaleSmoothness);
+                    // 🔄 **改成除法 `/ scaleFactor` 來反轉縮放邏輯**
                 }
             }
         }

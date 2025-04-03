@@ -2,30 +2,30 @@
 
 public class DepthMaskController : MonoBehaviour
 {
-    public GameObject depthMaskQuad;  // 拖入你的 Quad 物件
-    public float activationDistance = 0.8f;  // 物體距離相機的閾值
+    public Transform cameraTransform;  // AR 相機
+    public GameObject depthMaskCylinder;  // 拖入你的 Cylinder 遮罩
+    public float activationDistance = 0.8f;  // 距離閾值
 
     void Start()
     {
-        if (depthMaskQuad == null)
+        if (depthMaskCylinder == null)
         {
-            Debug.LogError("Depth Mask Quad 未設定！");
+            Debug.LogError("Depth Mask Cylinder 未設定！");
         }
     }
 
     void Update()
     {
-        // 計算物體與相機的距離
-        float distanceToCamera = Vector3.Distance(Camera.main.transform.position, transform.position);
+        float distanceToCamera = Vector3.Distance(cameraTransform.position, transform.position);
 
-        // 根據距離啟動/禁用深度遮罩
+        // 當無人機距離相機太近時，啟動遮罩
         if (distanceToCamera < activationDistance)
         {
-            depthMaskQuad.SetActive(true);  // 啟動深度遮罩
+            depthMaskCylinder.SetActive(true);
         }
         else
         {
-            depthMaskQuad.SetActive(false);  // 禁用深度遮罩
+            depthMaskCylinder.SetActive(false);
         }
     }
 }
