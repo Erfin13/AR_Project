@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638791789387118065
-    m_Hash: 2550778267
+      ticks: 638792837303437922
+    m_Hash: 1647715566
   m_LockFileStatus:
     m_FilePath: C:/Users/fcd26/Unity/AR_Project/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638791789387166156
-    m_Hash: 4155125695
+      ticks: 638792837303437922
+    m_Hash: 4285917238
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -5464,8 +5464,10 @@ m_ResolvedPackages:
     - 1.0.3
     - 2.0.0
     - 2.0.1
+    - 2.1.0
     compatible:
     - 2.0.1
+    - 2.1.0
     recommended: 2.0.1
     deprecated: []
   dependencies: []
