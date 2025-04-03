@@ -19,7 +19,7 @@ public class ARObjectInteraction : MonoBehaviour
 
     void Start()
     {
-        objectTransform = gameObject.transform.parent != null ? gameObject.transform.parent : gameObject.transform;
+        objectTransform = GameObject.Find("Drone_Custom")?.transform;
 
         if (objectTransform == null)
         {
@@ -72,7 +72,7 @@ public class ARObjectInteraction : MonoBehaviour
                 if (initialDistance > 1e-5f)
                 {
                     float scaleFactor = Mathf.Clamp(currentDistance / initialDistance, 0.5f, 2f);
-                    objectTransform.localScale = Vector3.Lerp(objectTransform.localScale, initialScale / scaleFactor, Time.deltaTime * scaleSmoothness);
+                    objectTransform.localScale = Vector3.Lerp(objectTransform.localScale, initialScale * scaleFactor, Time.deltaTime * scaleSmoothness);
                     // 🔄 **改成除法 `/ scaleFactor` 來反轉縮放邏輯**
                 }
             }
